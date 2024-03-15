@@ -13,7 +13,7 @@ import (
 func NewDBConnection() (*gorm.DB, error) {
 	conf, err := config.LoadConfig()
 	if err != nil {
-		log.Fatalf("Error loading configuration: %v", err)
+		log.Fatalf("error loading configuration: %v", err)
 		return nil, err
 	}
 
@@ -22,13 +22,13 @@ func NewDBConnection() (*gorm.DB, error) {
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		log.Fatalf("Error connecting to database: %v", err)
+		log.Fatalf("error connecting to database: %v", err)
 		return nil, err
 	}
 
 	err = AutoMigrate(db)
 	if err != nil {
-		log.Fatalf("Error performing auto migration: %v", err)
+		log.Fatalf("error performing auto migration: %v", err)
 		return nil, err
 	}
 
@@ -38,7 +38,7 @@ func NewDBConnection() (*gorm.DB, error) {
 func AutoMigrate(db *gorm.DB) error {
 	err := db.AutoMigrate(&entities.User{})
 	if err != nil {
-		log.Fatalf("Error auto-migrating User table: %v", err)
+		log.Fatalf("error auto-migrating user table: %v", err)
 		return err
 	}
 

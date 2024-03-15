@@ -26,14 +26,14 @@ func LoadConfig() (*Config, error) {
 	viper.SetConfigType("yaml")
 
 	if err := viper.ReadInConfig(); err != nil {
-		log.Fatalf("Error reading config file: %v", err)
+		log.Fatalf("error reading config file: %v", err)
 		return nil, err
 	}
 
 	var config Config
 	err := viper.Unmarshal(&config)
 	if err != nil {
-		log.Fatalf("Unable to decode into struct: %v", err)
+		log.Fatalf("unable to decode into struct: %v", err)
 		return nil, err
 	}
 
